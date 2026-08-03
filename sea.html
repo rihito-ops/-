@@ -311,54 +311,40 @@
     </p>
 
     <script>
-    const baseUrl =
-        "https://raw.githubusercontent.com/rihito-ops/-/feature308/%E7%94%BB%E5%83%8F/";
+    const baseUrl ="https://raw.githubusercontent.com/rihito-ops/-/feature308/%E7%94%BB%E5%83%8F/";
     const slideImages = {
         chichibugahama: [baseUrl + "chichibugahama1.jpg",baseUrl + "chichibugahama2.jpg",baseUrl + "chichibugahama3.jpg"],
-        
         olive: [baseUrl + "olive1.jpg",baseUrl + "olive2.jpg",baseUrl + "olive3.jpg"],
-        
         megijima: [baseUrl + "megijima1.jpg",baseUrl + "megijima2.jpg",baseUrl + "megijima3.jpg"],
-        
         ariakehama: [baseUrl + "ariakehama1.jpg",baseUrl + "ariakehama2.jpg",baseUrl + "ariakehama3.jpg"],
-        
         tsutajima: [baseUrl + "tsutajima1.jpg",baseUrl + "tsutajima2.jpg",baseUrl + "tsutajima3.jpg"]
     };
-
+    
     const slideNumbers = {chichibugahama: 0,olive: 0,megijima: 0,ariakehama: 0,tsutajima: 0};
-
+   
     function changeSlide(place, direction) {
         const image = document.getElementById(place);
         slideNumbers[place] += direction;
-
         if (slideNumbers[place] >= slideImages[place].length) {slideNumbers[place] = 0;}
-
         if (slideNumbers[place] < 0) {slideNumbers[place] = slideImages[place].length - 1;}
-
         image.style.opacity = "0.25";
-
         setTimeout(function () {
             image.src = slideImages[place][slideNumbers[place]];
             image.style.opacity = "1";
             updateDots(place);
         }, 180);
     }
-
+        
     function updateDots(place) {
         const dotArea = document.getElementById(place + "-dots");
-
         if (!dotArea) {return;}
-
         const dots = dotArea.querySelectorAll("button");
-
         dots.forEach(function (dot, index) {
-            if (index === slideNumbers[place]) {
-                dot.style.backgroundColor = "rgb(0, 120, 180)";
-                dot.style.transform = "scale(1.25)";
-            } else {
-                dot.style.backgroundColor = "rgb(190, 190, 190)";
-                dot.style.transform = "scale(1)";
-            }
+            if (index === slideNumbers[place]) 
+            {dot.style.backgroundColor = "rgb(0, 120, 180)";
+                dot.style.transform = "scale(1.25)";}
+            else {dot.style.backgroundColor = "rgb(190, 190, 190)";
+                dot.style.transform = "scale(1)";}
         });
     }
 
@@ -369,7 +355,6 @@
 
     function prepareSlideshows() {
         const slideshows = document.querySelectorAll(".slideshow");
-
         slideshows.forEach(function (slideshow) {
             slideshow.style.position = "relative";
             slideshow.style.width = "700px";
@@ -379,7 +364,6 @@
             slideshow.style.boxSizing = "border-box";
 
             const image = slideshow.querySelector(".slide-image");
-
             image.style.setProperty("display", "block", "important");
             image.style.setProperty("width", "100%", "important");
             image.style.setProperty("max-width", "700px", "important");
@@ -390,7 +374,6 @@
             image.style.setProperty("transition","opacity 0.35s ease","important");
 
             const buttons = slideshow.querySelectorAll("button");
-
             buttons.forEach(function (button) {
                 button.style.setProperty("position","absolute","important");
                 button.style.setProperty("top", "50%", "important");
@@ -412,7 +395,6 @@
 
             const place = image.id;
             const dotArea = document.createElement("div");
-
             dotArea.id = place + "-dots";
             dotArea.style.setProperty("display", "flex", "important");
             dotArea.style.setProperty("justify-content","center","important");
@@ -422,9 +404,7 @@
 
             for (let i = 0; i < 3; i++) {
                 const dot = document.createElement("button");
-
                 dot.type = "button";
-
                 dot.onclick = function () {
                     showSlide(place, i);
                 };
@@ -439,11 +419,7 @@
                 dot.style.setProperty("border-radius","50%","important");
                 dot.style.setProperty("background-color","rgb(190, 190, 190)","important");
                 dot.style.setProperty("cursor", "pointer", "important");
-                dot.style.setProperty(
-                    "transition",
-                    "background-color 0.3s, transform 0.3s",
-                    "important"
-                );
+                dot.style.setProperty("transition","background-color 0.3s, transform 0.3s","important");
 
                 dotArea.appendChild(dot);
             }
@@ -457,11 +433,10 @@
 
     function resizeSlideImages() {
         const images = document.querySelectorAll(".slide-image");
-
         images.forEach(function (image) {
-            if (window.innerWidth <= 700) {
-                image.style.setProperty("height","260px","important");
-            } else {image.style.setProperty("height","420px","important");}
+            if (window.innerWidth <= 700)
+            {image.style.setProperty("height","260px","important");}
+            else {image.style.setProperty("height","420px","important");}
         });
     }
 
