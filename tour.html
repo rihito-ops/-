@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>旅行先まとめサイト</title>
+        <link rel="stylesheet" href="tour.css">
+    </head>
+    <body>
+        <h1>旅行先まとめサイト</h1>
+        <nav>
+        <p>香川県旅行先まとめサイトへようこそ！<br>
+        このサイトでは食べ物や景色など香川県の魅力を感じてもらうべく、おすすめの場所をまとめました。<br>
+        是非、これを機に香川県を楽しんでいただければ幸いです。</p>
+        </nav>
+        <label for="place">調べたい食べ物や観光地を選択してください：</label>
+        <select id="place">
+            <option value="" selected disabled>食べ物・観光地</option>
+            <option value="udon.html">うどん</option>
+            <option value="udonjanaiyo.html">うどん以外</option>
+            <option value="mounten.html">山</option>
+            <option value="sea.html">海</option>
+            <option value="https://abehiroshi.la.coocan.jp/">外部リンクチェック用</option>
+        </select>
+        <button onclick="movePlace()">決定</button>
+        <script>            
+            function movePlace() {
+                const place = document.getElementById("place").value;
+
+                if (place !== "") {
+                    window.location.href = place;
+                } else {
+                alert("サイトを選択してください。");
+                }
+            }
+        </script>
+
+    </body>
+</html>
